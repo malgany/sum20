@@ -207,6 +207,11 @@ footer {
         border: none;
     }
 
+    .teclado {
+        width: 100%;
+        display: none;
+    }
+
     #keyboard {
         padding: 2px 0px;
         font-size: 0.8rem;
@@ -223,9 +228,9 @@ footer {
     }
 
     #keyboard .box {
-        font-size: 1rem;
-        width: 1.8rem;
-        height: 1.8rem;
+        font-size: 2rem;
+        width: 3.8rem;
+        height: 3.8rem;
     }
 
     .onlymobile {
