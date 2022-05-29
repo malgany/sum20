@@ -181,6 +181,16 @@ footer {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#box-modal-again {
+    padding-top: 60px;
+    cursor: pointer;
+}
+
+.response {
+    font-size: 28px;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 700px) {
     html {
         font-size: 14px;

@@ -23,8 +23,10 @@
     </div>
     <div id="keyboard">
     </div>
-    <div class="modal" onclick="$('.box-modal').hide();">
-        <div class="box-modal">You Win</div>
+    <div id="modal" class="modal">
+        <div style="display: none" id="box-modal" class="box-modal">You Win</div>
+        <div style="display: none" id="box-modal-lose" class="box-modal">You Lose <div id="response"></div></div>
+        <div style="display: none" id="box-modal-again" class="box-modal">↻</div>
     </div>
 </main>
 <script>

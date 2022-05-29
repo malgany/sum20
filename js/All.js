@@ -64,6 +64,10 @@ function All() {
             kbox[i].addEventListener('click', teclaKeyboard, false);
         }
 
+        document.getElementById('modal').addEventListener('click', clickModal, false);
+
+        document.getElementById('box-modal-again').addEventListener('click', reload, false);
+
         document.addEventListener('keypress', teclaKeyboard, false);
     }
 
@@ -146,6 +150,7 @@ function All() {
         if (win === 5) {
             setTimeout(() => {
                 $('.modal').show();
+                $('#box-modal').show();
             }, 500);
             return;
         }
@@ -168,10 +173,27 @@ function All() {
 
         document.getElementById("w" + line).style['pointer-events'] = 'none';
         line++;
-        document.getElementById("w" + line).style['pointer-events'] = 'auto';
 
-        let index = g.getElementsByClassName("active")[0];
-        $(index).removeClass("active");
-        $('#w' + line + ' div:eq(0)').addClass('active');
+        if (line < 7) {
+            document.getElementById("w" + line).style['pointer-events'] = 'auto';
+
+            let index = g.getElementsByClassName("active")[0];
+            $(index).removeClass("active");
+            $('#w' + line + ' div:eq(0)').addClass('active');
+        } else {
+            $('.modal').show();
+            $('#box-modal-lose').show();
+            $('#response').text(numbers.join(' '));
+        }
+    }
+
+    function clickModal() {
+        $('#box-modal').hide();
+        $('#box-modal-lose').hide();
+        $('#box-modal-again').show();
+    }
+
+    function reload() {
+        document.location.reload(true);
     }
 }
