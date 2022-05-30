@@ -182,8 +182,14 @@ footer {
 }
 
 #box-modal-again {
-    padding-top: 45px;
+    padding: 10px 0px 39px 0px;
     cursor: pointer;
+    text-align: center;
+    font-size: 35px;
+    background: #FFF;
+    height: 10px;
+    width: 100%;
+    z-index: 2;
 }
 
 .response {
@@ -208,7 +214,7 @@ footer {
     }
 
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     main div#game, main div#sugestion {
@@ -223,7 +229,7 @@ footer {
     }
 
     #keyboard {
-        padding: 2px 0px;
+        padding: 65% 0px;
         font-size: 0.8rem;
     }
 
