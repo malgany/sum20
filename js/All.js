@@ -21,7 +21,7 @@ function All() {
     let lines = 7;
 
     let line = 1;
-    let win_session = parseInt(sessionStorage.getItem('win'));
+    let win_session = sessionStorage.getItem('win') || 0;
 
     function init() {
 
@@ -145,6 +145,7 @@ function All() {
 
             if (val === numbers_local[w]) {
                 gbox[add_val[line - 1] + w].className = "box green";
+                $(`[data-codigo=${val}]`).removeClass("orange");
                 $(`[data-codigo=${val}]`).removeClass("gray");
                 $(`[data-codigo=${val}]`).addClass("green");
                 numbers_local[w] = -1;
@@ -172,8 +173,11 @@ function All() {
             $(`[data-codigo=${val}]`).removeClass("gray");
 
             if (numbers_local.includes(val)) {
+                let clas = $(`[data-codigo=${val}]`).attr("class");
                 gbox[add_val[line - 1] + w].className = "box orange";
-                $(`[data-codigo=${val}]`).addClass("orange");
+                if(clas.search("green") === -1){
+                    $(`[data-codigo=${val}]`).addClass("orange");
+                }
             } else {
                 $(`[data-codigo=${val}]`).addClass("delta");
             }
