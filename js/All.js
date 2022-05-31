@@ -17,7 +17,11 @@ function All() {
     const target = 20;
     const numbers = generateNumbers(target);
 
+    let columns = 6;
+    let lines = 7;
+
     let line = 1;
+    let win_session = parseInt(sessionStorage.getItem('win'));
 
     function init() {
 
@@ -31,9 +35,10 @@ function All() {
     }
 
     function createGameSquad() {
-        for (let i = 1; i < 7; i++) {
-            var box = '<div id="w' + i + '" class="word">\n';
-            for (let j = 1; j < 6; j++)
+
+        for (let i = 1; i < (lines - win_session); i++) {
+            let box = '<div id="w' + i + '" class="word">\n';
+            for (let j = 1; j < columns; j++)
                 box += '<div class="box" data-position="' + j + '"></div>\n';
             box += '</div>';
             g.innerHTML += box;
@@ -148,6 +153,9 @@ function All() {
         }
 
         if (win === 5) {
+            win_session++;
+            sessionStorage.setItem("win", win_session);
+
             setTimeout(() => {
                 $('.modal').show();
                 $('#box-modal').show();
@@ -174,13 +182,15 @@ function All() {
         document.getElementById("w" + line).style['pointer-events'] = 'none';
         line++;
 
-        if (line < 7) {
+        if (line < (lines - win_session)) {
             document.getElementById("w" + line).style['pointer-events'] = 'auto';
 
             let index = g.getElementsByClassName("active")[0];
             $(index).removeClass("active");
             $('#w' + line + ' div:eq(0)').addClass('active');
         } else {
+            win_session = 0;
+            sessionStorage.setItem("win", win_session);
             $('.modal').show();
             $('#box-modal-lose').show();
             $('#response').text(numbers.join(' '));
