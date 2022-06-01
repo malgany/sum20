@@ -164,19 +164,22 @@ function All() {
             return;
         }
 
+        let already_exists = [];
         for (let w = 0; w < 5; w++) {
             let val = parseInt(gbox[add_val[line - 1] + w].innerText);
 
             if (numbers_local[w] === -1) {
                 continue;
             }
+
             $(`[data-codigo=${val}]`).removeClass("gray");
 
-            if (numbers_local.includes(val)) {
+            if (numbers_local.includes(val) && already_exists.includes(val) === false) {
                 let clas = $(`[data-codigo=${val}]`).attr("class");
                 gbox[add_val[line - 1] + w].className = "box orange";
                 if(clas.search("green") === -1){
                     $(`[data-codigo=${val}]`).addClass("orange");
+                    already_exists.push(val);
                 }
             } else {
                 $(`[data-codigo=${val}]`).addClass("delta");
