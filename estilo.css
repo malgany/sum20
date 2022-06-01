@@ -55,6 +55,7 @@ header h1 a:hover {
 main {
     position: relative;
     user-select: none;
+    height: 95vh;
 }
 
 main div#game, main div#sugestion {
@@ -203,8 +204,9 @@ footer {
     }
 
     #keyboard {
-        padding: 5% 0px 0px 0px;
         font-size: 0.8rem;
+        position: absolute;
+        bottom: 0px;
     }
 
     #keyboard .box {
@@ -221,14 +223,15 @@ footer {
     }
 
     #keyboard {
-        padding: 10% 0px 0px 0px;
         font-size: 0.8rem;
+        position: absolute;
+        bottom: 0px;
     }
 
     #keyboard .box {
         font-size: 2.0rem;
-        width: 13rem;
-        height: 13rem;
+        width: 5rem;
+        height: 5rem;
     }
 }
 
@@ -239,8 +242,9 @@ footer {
     }
 
     #keyboard {
-        padding: 30% 0px 0px 0px;
         font-size: 0.8rem;
+        position: absolute;
+        bottom: 0px;
     }
 
     #keyboard .box {
