@@ -36,13 +36,22 @@ function All() {
 
     function createGameSquad() {
 
-        for (let i = 1; i < (lines - win_session); i++) {
+        for (let i = 1; i < lines; i++) {
             let box = '<div id="w' + i + '" class="word">\n';
             for (let j = 1; j < columns; j++)
                 box += '<div class="box" data-position="' + j + '"></div>\n';
             box += '</div>';
             g.innerHTML += box;
         }
+
+        setTimeout(() => {
+            for (let i = lines; i > (lines - parseInt(win_session)); i--) {
+                $('#w' + (i-1)).addClass("treme-active");
+                setTimeout(() => {
+                    $('#w' + (i-1)).remove();
+                }, 500);
+            }
+        }, 2000);
     }
 
     function createGameKeyboard() {
