@@ -177,7 +177,7 @@ function All() {
             return;
         }
 
-        let already_exists = [];
+        let already_exists = [numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]];
         for (let w = 0; w < 5; w++) {
             let val = parseInt(gbox[add_val[line - 1] + w].innerText);
 
@@ -187,12 +187,12 @@ function All() {
 
             $(`[data-codigo=${val}]`).removeClass("gray");
 
-            if (numbers_local.includes(val) && already_exists.includes(val) === false) {
+            if (numbers_local.includes(val) && already_exists.includes(val)) {
                 let clas = $(`[data-codigo=${val}]`).attr("class");
                 gbox[add_val[line - 1] + w].className = "box orange";
                 if(clas.search("green") === -1){
                     $(`[data-codigo=${val}]`).addClass("orange");
-                    already_exists.push(val);
+                    already_exists.splice(already_exists.indexOf(val), 1);
                 }
             } else {
                 $(`[data-codigo=${val}]`).addClass("delta");
@@ -225,5 +225,18 @@ function All() {
 
     function reload() {
         document.location.reload(true);
+    }
+
+
+    // create function remove element from array
+    Array.prototype.remove = function() {
+        var what, a = arguments, L = a.length, ax;
+        while (L && this.length) {
+            what = a[--L];
+            while ((ax = this.indexOf(what)) !== -1) {
+                this.splice(ax, 1);
+            }
+        }
+        return this;
     }
 }
