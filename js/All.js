@@ -46,9 +46,9 @@ function All() {
 
         setTimeout(() => {
             for (let i = lines; i > (lines - parseInt(win_session)); i--) {
-                $('#w' + (i-1)).addClass("treme-active");
+                $('#w' + (i - 1)).addClass("treme-active");
                 setTimeout(() => {
-                    $('#w' + (i-1)).remove();
+                    $('#w' + (i - 1)).remove();
                 }, 500);
             }
         }, 2000);
@@ -190,7 +190,7 @@ function All() {
             if (numbers_local.includes(val) && already_exists.includes(val)) {
                 let clas = $(`[data-codigo=${val}]`).attr("class");
                 gbox[add_val[line - 1] + w].className = "box orange";
-                if(clas.search("green") === -1){
+                if (clas.search("green") === -1) {
                     $(`[data-codigo=${val}]`).addClass("orange");
                     already_exists.splice(already_exists.indexOf(val), 1);
                 }
@@ -225,18 +225,5 @@ function All() {
 
     function reload() {
         document.location.reload(true);
-    }
-
-
-    // create function remove element from array
-    Array.prototype.remove = function() {
-        var what, a = arguments, L = a.length, ax;
-        while (L && this.length) {
-            what = a[--L];
-            while ((ax = this.indexOf(what)) !== -1) {
-                this.splice(ax, 1);
-            }
-        }
-        return this;
     }
 }
