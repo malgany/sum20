@@ -196,10 +196,51 @@ footer {
     font-weight: bold;
 }
 
-@media only screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
+    div.word {
+        margin: 10px auto;
+        width: 100%;
+    }
+
+    #keyboard {
+        padding: 5% 0px 0px 0px;
+        font-size: 0.8rem;
+    }
+
+    #keyboard .box {
+        font-size: 2rem;
+        width: 3.8rem;
+        height: 3.8rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    div.word {
+        margin: 10px auto;
+        width: 100%;
+    }
+
+    #keyboard {
+        padding: 10% 0px 0px 0px;
+        font-size: 0.8rem;
+    }
+
+    #keyboard .box {
+        font-size: 2.0rem;
+        width: 13rem;
+        height: 13rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
     div.word {
         margin: 1px auto;
         width: 100%;
+    }
+
+    #keyboard {
+        padding: 30% 0px 0px 0px;
+        font-size: 0.8rem;
     }
 
     #keyboard .box {
@@ -240,11 +281,6 @@ footer {
         display: none;
     }
 
-    #keyboard {
-        padding: 5% 0px 0px 0px;
-        font-size: 0.8rem;
-    }
-
     .box {
         display: inline-block;
         vertical-align: middle;
@@ -253,12 +289,6 @@ footer {
         max-height: 48px;
         font-size: 2.4rem;
         text-align: center;
-    }
-
-    #keyboard .box {
-        font-size: 2rem;
-        width: 3.8rem;
-        height: 3.8rem;
     }
 
     .onlymobile {
