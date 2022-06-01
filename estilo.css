@@ -181,12 +181,12 @@ footer {
 }
 
 #box-modal-again {
-    padding: 10px 0px 39px 0px;
+    padding: 15px 0px 15px 0px;
     cursor: pointer;
     text-align: center;
     font-size: 35px;
     background: #FFF;
-    height: 10px;
+    height: 45px;
     width: 100%;
     z-index: 2;
 }

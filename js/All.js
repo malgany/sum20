@@ -88,6 +88,7 @@ function All() {
         let index = g.getElementsByClassName("active")[0];
         const codigo = (event.type == "keypress") ? event.key.toUpperCase() : this.getAttribute("data-codigo");
 
+        console.log(codigo);
         if (codigo.length > 0 && codigo >= 0 && codigo <= 20 && !(typeof index === 'undefined')) {
 
             index.innerText = codigo;
@@ -101,7 +102,7 @@ function All() {
                 $('#w' + line + ' div:eq(4)').addClass('active');
             }
 
-        } else if (codigo === '⏎') {
+        } else if (codigo === '⏎' || codigo === 'ENTER') {
             validateLine();
         } else if (codigo === '←' && index !== undefined && index !== null) {
             if (index.innerText !== '') {
