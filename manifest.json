@@ -1,25 +1,25 @@
 {
   "short_name": "sum20",
   "name": "Sum 20",
-  "description": "a numbers game",
+  "description": "A numbers game",
   "categories": ["games"],
   "lang": "en",
   "icons": [
     {
-      "src": "icon192w.png",
+      "src": "image/icon192w.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon512w.png",
+      "src": "image/icon512w.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
-  "background_color": "#6E5C62",
+  "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "portrait",
   "scope": ".",
-  "theme_color": "#6E5C62"
+  "theme_color": "#FFFFFF"
 }
