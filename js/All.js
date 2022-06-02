@@ -107,27 +107,26 @@ function All() {
             if (nS != null) {
                 nS.classList.add("active");
             } else {
-                if ($("#w1 [class=box]").html() !== undefined) {
-                    $('#w' + line + ' [class=box]').addClass('active');
+                if ($('#w' + line + ' [class=box]').html() !== undefined) {
+                    $('#w' + line + ' [class=box]:eq(0)').addClass('active');
                 } else {
                     $('#w' + line + ' div:eq(4)').addClass('active');
                 }
             }
-
         } else if (codigo === '⏎' || codigo === 'ENTER') {
             validateLine();
         } else if (codigo === '←' && index !== undefined && index !== null) {
             if (index.innerText !== '') {
                 index.innerText = '';
-                index.className = "box white active";
+                index.className = "box active";
             } else {
                 index.innerText = '';
-                index.className = "box white";
+                index.className = "box";
 
                 let nS = index.previousElementSibling;
                 if (nS != null) {
                     nS.innerText = '';
-                    nS.className = "box white";
+                    nS.className = "box";
                     nS.classList.add("active");
                 } else {
                     $('#w' + line + ' div:eq(0)').addClass('active');
@@ -190,9 +189,9 @@ function All() {
             if (numbers_local.includes(val) && already_exists.includes(val)) {
                 let clas = $(`[data-codigo=${val}]`).attr("class");
                 gbox[add_val[line - 1] + w].className = "box orange";
+                already_exists.splice(already_exists.indexOf(val), 1);
                 if (clas.search("green") === -1) {
                     $(`[data-codigo=${val}]`).addClass("orange");
-                    already_exists.splice(already_exists.indexOf(val), 1);
                 }
             } else {
                 $(`[data-codigo=${val}]`).addClass("delta");
