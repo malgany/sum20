@@ -92,13 +92,39 @@ function padLeadingZeros(num, size) {
     return s;
 }
 
+function saveScore(wins) {
+
+    let strscore_text = 'Joguei Sum 20 e ganhei: ';
+
+    for (let i = 0; i < wins; i++) {
+        strscore_text += '★';
+    }
+
+    strscore_text += '\n';
+
+    $('[id^=w]').each(function(index, element) {
+        $(element).find('.box').each(function(i, e) {
+            switch (e.className) {
+                case 'box gray':
+                    strscore_text += '⬛';
+                    break;
+                case 'box orange':
+                    strscore_text += '🟨';
+                    break;
+                case 'box green':
+                    strscore_text += '🟩';
+                    break;
+            }
+        });
+        strscore_text += '\n'
+    });
+    console.log(strscore_text);
+    localStorage.setItem('score_' + getToday(), strscore_text);
+}
+
 const shareData = {
     title: 'Sum 20',
-    text: 'Joguei no Sum 20 e ganhei: ⬛⬛⬛⬛⬛\n' +
-        '⬛🟨🟨⬛🟨\n' +
-        '🟩🟩⬛🟩⬛\n' +
-        '🟩🟩⬛🟩🟩\n' +
-        '🟩🟩🟩🟩🟩',
+    text: localStorage.getItem('score_' + getToday()),
     url: 'https://malgany.github.io/sum20',
 }
 

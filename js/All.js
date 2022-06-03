@@ -38,6 +38,9 @@ function All() {
             $('.modal').show();
             $('#box-modal-comeback').show();
 
+            let score = localStorage.getItem('score_' + getToday());
+            $('#score').html(score.slice(23));
+
             let myInterval = setInterval(() => {
                 $('#time').html(countDown().hours + ':' + countDown().minutes + ':' + countDown().seconds);
             }, 1000);
@@ -218,6 +221,7 @@ function All() {
             $('#box-modal').removeClass('modal-win');
             if (gameType === 'daily') {
                 win_session++;
+
                 sessionStorage.setItem("win", win_session);
                 sessionStorage.setItem("again", 1);
 
@@ -234,6 +238,8 @@ function All() {
                 for (let i = 0; i < win_session; i++) {
                     $('.star' + i).show();
                 }
+
+                saveScore(win_session);
             }
 
             setTimeout(() => {

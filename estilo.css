@@ -251,6 +251,11 @@ footer {
     background: antiquewhite;
 }
 
+#score {
+    white-space: pre-line;
+    font-size: 30px;
+}
+
 @media screen and (max-width: 700px) {
     div.word {
         margin: 10px auto;
