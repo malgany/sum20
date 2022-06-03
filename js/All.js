@@ -30,11 +30,30 @@ function All() {
     document.getElementsByClassName('menu').item(1).addEventListener('click', init, false);
 
     function init() {
-        let el = event.target;
+
+        let type =  event.target.dataset || {'op' : '0'};
+        console.log(type);
+        if ( played == 1 && type.op == 1) {
+            //jogar novamente amanhã
+            $('.modal').show();
+            $('#box-modal-comeback').show();
+
+            let myInterval = setInterval(() => {
+                $('#time').html(countDown().hours + ':' + countDown().minutes + ':' + countDown().seconds);
+            }, 1000);
+
+            document.getElementById('box-modal-comeback').addEventListener('click', closeLocal, false);
+
+            function closeLocal() {
+                clearInterval(myInterval);
+                $('#box-modal-comeback').hide();
+                $('#modal').hide();
+            }
+            return;
+        }
 
         $('.container').hide();
 
-        console.log(sessionStorage.getItem("again"), played);
         if(sessionStorage.getItem("again") == 1 && played == 0){
             sessionStorage.setItem("again", 0);
             gameType = 'daily';
@@ -42,16 +61,11 @@ function All() {
             return;
         }
 
-        if ( played == 1 ) {
-            //jogar novamente amanhã
-            alert('Você já jogou hoje, volte amanhã!');
-            return;
-        }
-
-        if(el.dataset.op == 1) {
+        if(type.op == 1) {
             gameType = 'daily';
             loadGame();
-        } else if(el.dataset.op == 2) {
+        } else if(type.op == 2) {
+            win_session = 0;
             gameType = 'free';
             loadGame();
         }
@@ -208,6 +222,14 @@ function All() {
 
                 if (win_session === 3) {
                     localStorage.setItem("played_" + getToday(), 1);
+                }
+
+                $('.star0').hide();
+                $('.star1').hide();
+                $('.star2').hide();
+
+                for (let i = 0; i < win_session; i++) {
+                    $('.star' + i).show();
                 }
             }
 

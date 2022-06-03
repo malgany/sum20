@@ -75,13 +75,19 @@ function countDown() {
     let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     return {
         days: days,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds
+        hours: padLeadingZeros(hours, 2),
+        minutes: padLeadingZeros(minutes, 2),
+        seconds: padLeadingZeros(seconds, 2)
     };
 }
 
 function getToday() {
     let today = new Date();
     return today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+}
+
+function padLeadingZeros(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
 }

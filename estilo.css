@@ -221,6 +221,28 @@ footer {
     align-items: center;
 }
 
+.star0, .star1, .star2 {
+    height: 100%;
+    width: 33%;
+    background-image: url(image/star1.png);
+    background-repeat: no-repeat;
+    float: left;
+    display: none;
+}
+
+#box-modal-comeback {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 30px 20px 15px 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 25%;
+    text-align: center;
+    font-size: 45px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
 @media screen and (max-width: 700px) {
     div.word {
         margin: 10px auto;
