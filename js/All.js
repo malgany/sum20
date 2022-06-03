@@ -22,6 +22,7 @@ function All() {
 
     let line = 1;
     let win_session = sessionStorage.getItem('win') || 0;
+    let played = localStorage.getItem("played_" + getToday()) || 0;
 
     let gameType = 'daily';
 
@@ -33,10 +34,17 @@ function All() {
 
         $('.container').hide();
 
-        if(sessionStorage.getItem("again") == 1){
+        console.log(sessionStorage.getItem("again"), played);
+        if(sessionStorage.getItem("again") == 1 && played == 0){
             sessionStorage.setItem("again", 0);
             gameType = 'daily';
             loadGame();
+            return;
+        }
+
+        if ( played == 1 ) {
+            //jogar novamente amanhã
+            alert('Você já jogou hoje, volte amanhã!');
             return;
         }
 
@@ -196,7 +204,13 @@ function All() {
             if (gameType === 'daily') {
                 win_session++;
                 sessionStorage.setItem("win", win_session);
+                sessionStorage.setItem("again", 1);
+
+                if (win_session === 3) {
+                    localStorage.setItem("played_" + getToday(), 1);
+                }
             }
+
             setTimeout(() => {
                 $('.modal').show();
                 $('#box-modal').show();
@@ -239,6 +253,8 @@ function All() {
             if (gameType === 'daily') {
                 win_session = 0;
                 sessionStorage.setItem("win", win_session);
+                sessionStorage.setItem("again", 0);
+                localStorage.setItem("played_" + getToday(), 1);
             }
             $('.modal').show();
             $('#box-modal-lose').show();
@@ -253,9 +269,6 @@ function All() {
     }
 
     function reload() {
-        if (gameType === 'daily') {
-            sessionStorage.setItem("again", 1);
-        }
         document.location.reload(true);
     }
 }
