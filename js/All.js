@@ -34,7 +34,7 @@ function All() {
         let type =  event.target.dataset || {'op' : '0'};
 
         if ( played == 1 && type.op == 1) {
-            //jogar novamente amanhã
+
             $('.modal').show();
             $('#box-modal-comeback').show();
 

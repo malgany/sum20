@@ -91,3 +91,21 @@ function padLeadingZeros(num, size) {
     while (s.length < size) s = "0" + s;
     return s;
 }
+
+const shareData = {
+    title: 'Sum 20',
+    text: 'Joguei no Sum 20 e ganhei: ⬛⬛⬛⬛⬛\n' +
+        '⬛🟨🟨⬛🟨\n' +
+        '🟩🟩⬛🟩⬛\n' +
+        '🟩🟩⬛🟩🟩\n' +
+        '🟩🟩🟩🟩🟩',
+    url: 'https://malgany.github.io/sum20',
+}
+
+document.getElementById('share').addEventListener('click', async () => {
+    try {
+        await navigator.share(shareData)
+    } catch(err) {
+        console.log('Error: ' + err);
+    }
+});
