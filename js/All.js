@@ -23,8 +23,33 @@ function All() {
     let line = 1;
     let win_session = sessionStorage.getItem('win') || 0;
 
-    function init() {
+    let gameType = 'daily';
 
+    document.getElementsByClassName('menu').item(0).addEventListener('click', init, false);
+    document.getElementsByClassName('menu').item(1).addEventListener('click', init, false);
+
+    function init() {
+        let el = event.target;
+
+        $('.container').hide();
+
+        if(sessionStorage.getItem("again") == 1){
+            sessionStorage.setItem("again", 0);
+            gameType = 'daily';
+            loadGame();
+            return;
+        }
+
+        if(el.dataset.op == 1) {
+            gameType = 'daily';
+            loadGame();
+        } else if(el.dataset.op == 2) {
+            gameType = 'free';
+            loadGame();
+        }
+    }
+
+    function loadGame() {
         createGameSquad();
         gbox = g.getElementsByClassName("box");
         kbox = k.getElementsByClassName("box");
@@ -44,14 +69,16 @@ function All() {
             g.innerHTML += box;
         }
 
-        setTimeout(() => {
-            for (let i = lines; i > (lines - parseInt(win_session)); i--) {
-                $('#w' + (i - 1)).addClass("treme-active");
-                setTimeout(() => {
-                    $('#w' + (i - 1)).remove();
-                }, 500);
-            }
-        }, 2000);
+        if (gameType === 'daily') {
+            setTimeout(() => {
+                for (let i = lines; i > (lines - parseInt(win_session)); i--) {
+                    $('#w' + (i - 1)).addClass("treme-active");
+                    setTimeout(() => {
+                        $('#w' + (i - 1)).remove();
+                    }, 500);
+                }
+            }, 2000);
+        }
     }
 
     function createGameKeyboard() {
@@ -166,9 +193,10 @@ function All() {
         }
 
         if (win === 5) {
-            win_session++;
-            sessionStorage.setItem("win", win_session);
-
+            if (gameType === 'daily') {
+                win_session++;
+                sessionStorage.setItem("win", win_session);
+            }
             setTimeout(() => {
                 $('.modal').show();
                 $('#box-modal').show();
@@ -208,8 +236,10 @@ function All() {
             $(index).removeClass("active");
             $('#w' + line + ' div:eq(0)').addClass('active');
         } else {
-            win_session = 0;
-            sessionStorage.setItem("win", win_session);
+            if (gameType === 'daily') {
+                win_session = 0;
+                sessionStorage.setItem("win", win_session);
+            }
             $('.modal').show();
             $('#box-modal-lose').show();
             $('#response').text(numbers.join(' '));
@@ -223,6 +253,9 @@ function All() {
     }
 
     function reload() {
+        if (gameType === 'daily') {
+            sessionStorage.setItem("again", 1);
+        }
         document.location.reload(true);
     }
 }

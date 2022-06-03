@@ -63,3 +63,25 @@ function shuffleArray(arr) {
     console.log(arr);
     return arr;
 }
+
+function countDown() {
+    let time = new Date();
+    let timeLeft = new Date(time.getFullYear(), time.getMonth(), time.getDate(), 23, 59, 59, 999);
+    let timeNow = new Date();
+    let timeDiff = timeLeft - timeNow;
+    let seconds = Math.floor((timeDiff / 1000) % 60);
+    let minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+    let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+    let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    return {
+        days: days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds
+    };
+}
+
+function getToday() {
+    let today = new Date();
+    return today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+}

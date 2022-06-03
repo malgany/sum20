@@ -201,6 +201,26 @@ footer {
     font-weight: bold;
 }
 
+.menu {
+    font-size: 50px;
+    width: 70%;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    margin: 20% 0px;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 700px) {
     div.word {
         margin: 10px auto;

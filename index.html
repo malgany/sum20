@@ -7,12 +7,12 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <link rel="manifest" href="manifest.json">
+    <!--    <link rel="manifest" href="manifest.json">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css">
-    <script  type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Sum 20</title>
 </head>
 <body>
@@ -26,14 +26,22 @@
     </div>
     <div id="modal" class="modal">
         <div style="display: none" id="box-modal" class="box-modal">You Win</div>
-        <div style="display: none" id="box-modal-lose" class="box-modal">You Lose <div id="response"></div></div>
+        <div style="display: none" id="box-modal-lose" class="box-modal">You Lose
+            <div id="response"></div>
+        </div>
         <div style="display: none" id="box-modal-again">↻</div>
+    </div>
+    <div class="container">
+        <label class="menu" data-op="1">Daily Mode</label>
+        <label class="menu" data-op="2">Free Mode</label>
     </div>
 </main>
 <script>
     window.onload = () => {
         let all = new All();
-        all.init();
+        if(sessionStorage.getItem("again") == 1) {
+            all.init();
+        }
     }
 </script>
 <script type="text/javascript" src="js/functions.js"></script>
