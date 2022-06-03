@@ -174,25 +174,29 @@ footer {
     padding: 30px 20px 15px 20px;
     border: 1px solid #888;
     width: 80%;
-    height: 18%;
+    height: auto;
     text-align: center;
     font-size: 45px;
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.modal-win {
+    height: 180px;
+}
+
 #box-modal-again {
-    padding: 10px 0px 10px 0px;
+    padding: 10px;
     cursor: pointer;
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     background: #FFF;
-    height: 45px;
-    width: 70%;
-    margin-left: 15%;
+    width: 36px;
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
     z-index: 2;
-    margin-top: 110%;
-    border-radius: 15px;
+    border-radius: 45px;
     box-shadow: -5px 5px 12px 0px #000000a1;
 }
 
@@ -207,9 +211,9 @@ footer {
     position: relative;
     cursor: pointer;
     text-align: center;
-    margin: 20% 0px;
     background: white;
     border-radius: 0.5rem;
+    margin-bottom: 10%;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
@@ -219,13 +223,15 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 20%;
 }
 
 .star0, .star1, .star2 {
-    height: 100%;
+    height: 70%;
     width: 33%;
     background-image: url(image/star1.png);
     background-repeat: no-repeat;
+    background-position: center;
     float: left;
     display: none;
 }
@@ -259,6 +265,10 @@ footer {
         font-size: 2rem;
         width: 3.8rem;
         height: 3.8rem;
+    }
+
+    .container {
+        padding-top: 50%;
     }
 }
 

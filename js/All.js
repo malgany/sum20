@@ -32,7 +32,7 @@ function All() {
     function init() {
 
         let type =  event.target.dataset || {'op' : '0'};
-        console.log(type);
+
         if ( played == 1 && type.op == 1) {
             //jogar novamente amanhã
             $('.modal').show();
@@ -42,7 +42,7 @@ function All() {
                 $('#time').html(countDown().hours + ':' + countDown().minutes + ':' + countDown().seconds);
             }, 1000);
 
-            document.getElementById('box-modal-comeback').addEventListener('click', closeLocal, false);
+            document.getElementById('modal').addEventListener('click', closeLocal, false);
 
             function closeLocal() {
                 clearInterval(myInterval);
@@ -215,10 +215,13 @@ function All() {
         }
 
         if (win === 5) {
+            $('#box-modal').removeClass('modal-win');
             if (gameType === 'daily') {
                 win_session++;
                 sessionStorage.setItem("win", win_session);
                 sessionStorage.setItem("again", 1);
+
+                $('#box-modal').addClass('modal-win');
 
                 if (win_session === 3) {
                     localStorage.setItem("played_" + getToday(), 1);
