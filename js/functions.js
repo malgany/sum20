@@ -60,7 +60,6 @@ function shuffleArray(arr) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    console.log(arr);
     return arr;
 }
 
@@ -118,14 +117,13 @@ function saveScore(wins) {
         });
         strscore_text += '\n'
     });
-    console.log(strscore_text);
     localStorage.setItem('score_' + getToday(), strscore_text);
 }
 
 const shareData = {
     title: 'Sum 20',
     text: localStorage.getItem('score_' + getToday()),
-    url: 'sum20.online',
+    url: 'https://sum20.online/',
 }
 
 document.getElementById('share').addEventListener('click', async () => {
