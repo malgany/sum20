@@ -87,7 +87,7 @@ function getToday() {
 }
 
 function padLeadingZeros(num, size) {
-    var s = num+"";
+    var s = num + "";
     while (s.length < size) s = "0" + s;
     return s;
 }
@@ -102,8 +102,8 @@ function saveScore(wins) {
 
     strscore_text += '\n';
 
-    $('[id^=w]').each(function(index, element) {
-        $(element).find('.box').each(function(i, e) {
+    $('[id^=w]').each(function (index, element) {
+        $(element).find('.box').each(function (i, e) {
             switch (e.className) {
                 case 'box gray':
                     strscore_text += '⬛';
@@ -131,7 +131,7 @@ const shareData = {
 document.getElementById('share').addEventListener('click', async () => {
     try {
         await navigator.share(shareData)
-    } catch(err) {
+    } catch (err) {
         console.log('Error: ' + err);
     }
 });
