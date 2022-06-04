@@ -23,6 +23,7 @@ function All() {
     let line = 1;
     let win_session = sessionStorage.getItem('win') || 0;
     let played = localStorage.getItem("played_" + getToday()) || 0;
+    let myInterval = null;
 
     let gameType = 'daily';
 
@@ -41,17 +42,12 @@ function All() {
             let score = localStorage.getItem('score_' + getToday());
             $('#score').html(score.slice(23));
 
-            let myInterval = setInterval(() => {
+            myInterval = setInterval(() => {
                 $('#time').html(countDown().hours + ':' + countDown().minutes + ':' + countDown().seconds);
             }, 1000);
 
-            document.getElementById('modal').addEventListener('click', closeLocal, false);
+            document.getElementById('modal').addEventListener('click', clickModal, false);
 
-            function closeLocal() {
-                clearInterval(myInterval);
-                $('#box-modal-comeback').hide();
-                $('#modal').hide();
-            }
             return;
         }
 
@@ -294,9 +290,15 @@ function All() {
     }
 
     function clickModal() {
-        $('#box-modal').hide();
-        $('#box-modal-lose').hide();
-        $('#box-modal-again').show();
+        if ($('#box-modal-comeback').is(':visible')) {
+            clearInterval(myInterval);
+            $('#box-modal-comeback').hide();
+            $('#modal').hide();
+        } else {
+            $('#box-modal').hide();
+            $('#box-modal-lose').hide();
+            $('#box-modal-again').show();
+        }
     }
 
     function reload() {
