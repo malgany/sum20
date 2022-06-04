@@ -125,7 +125,7 @@ function saveScore(wins) {
 const shareData = {
     title: 'Sum 20',
     text: localStorage.getItem('score_' + getToday()),
-    url: 'https://malgany.github.io/sum20',
+    url: 'sum20.online',
 }
 
 document.getElementById('share').addEventListener('click', async () => {
