@@ -256,6 +256,29 @@ footer {
     font-size: 30px;
 }
 
+.modal-help {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#help {
+    background-image: url(image/help.png);
+    background-repeat: no-repeat;
+    width: 38%;
+    height: 62%;
+    margin: 5% 30%;
+    top: 0px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
 @media screen and (max-width: 700px) {
     div.word {
         margin: 10px auto;
@@ -276,6 +299,13 @@ footer {
 
     .container {
         padding-top: 50%;
+    }
+
+    #help {
+        width: 90%;
+        margin: 15% 5%;
+        height: 70%;
+        background-size: cover;
     }
 }
 
@@ -314,6 +344,39 @@ footer {
         font-size: 1.8rem;
         width: 3.3rem;
         height: 3.3rem;
+    }
+
+    #help {
+        width: 90%;
+        margin: 30% 5%;
+        height: 60%;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    div.word {
+        margin: 1px auto;
+        width: 100%;
+    }
+
+    #keyboard {
+        font-size: 0.8rem;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    #keyboard .box {
+        font-size: 1.8rem;
+        width: 3.3rem;
+        height: 3.3rem;
+    }
+
+    #help {
+        width: 90%;
+        margin: 25% 5%;
+        height: 50%;
+        background-size: cover;
     }
 }
 

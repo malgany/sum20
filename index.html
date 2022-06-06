@@ -55,6 +55,9 @@
         <label class="menu" data-op="1">Daily Mode</label>
         <label class="menu" data-op="2">Free Mode</label>
     </div>
+    <div class="modal-help">
+        <div id="help"></div>
+    </div>
 </main>
 <script>
     window.onload = () => {
@@ -62,6 +65,10 @@
         let played = localStorage.getItem("played_" + getToday()) || 0;
         if (sessionStorage.getItem("again") == 1 && played == 0) {
             all.init();
+        }
+        let help = localStorage.getItem("help") || 0;
+        if(help == 0) {
+            $('.modal-help').show();
         }
     }
 </script>

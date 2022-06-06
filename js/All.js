@@ -30,6 +30,11 @@ function All() {
     document.getElementsByClassName('menu').item(0).addEventListener('click', init, false);
     document.getElementsByClassName('menu').item(1).addEventListener('click', init, false);
 
+    document.getElementsByClassName('modal-help').item(0).addEventListener('click', function () {
+        $(this).hide();
+        localStorage.setItem("help", 1);
+    }, false);
+
     function init() {
 
         let type =  event.target.dataset || {'op' : '0'};
