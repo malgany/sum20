@@ -236,6 +236,8 @@ footer {
 }
 
 #box-modal-comeback {
+    position: absolute;
+    z-index: 2;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 30px 20px 15px 20px;
