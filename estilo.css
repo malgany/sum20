@@ -279,6 +279,26 @@ footer {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
+@media screen and (max-width: 1900px) {
+
+    #help {
+        width: 22%;
+        margin: 5% 35%;
+        height: 70%;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 1394px) {
+
+    #help {
+        width: 30%;
+        margin: 5% 35%;
+        height: 50%;
+        background-size: cover;
+    }
+}
+
 @media screen and (max-width: 700px) {
     div.word {
         margin: 10px auto;
