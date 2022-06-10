@@ -94,7 +94,7 @@ function padLeadingZeros(num, size) {
 
 function saveScore(wins) {
 
-    let strscore_text = 'Joguei Sum 20 e ganhei: ';
+    let strscore_text = 'I played Sum 20 and won: ';
 
     for (let i = 0; i < wins; i++) {
         strscore_text += '★';
