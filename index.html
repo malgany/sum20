@@ -1,78 +1,398 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="en" class="h-100">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
     <meta name="author" content="Malgany">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <link rel="manifest" href="manifest.json">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="estilo.css?v=5">
-    <link rel="icon" type="image/png" href="image/icon192w.png" />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NDRZ6TWEKC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-NDRZ6TWEKC');
-    </script>
     <title>Sum 20</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1744510404575662"
+            crossorigin="anonymous"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    <link href="css/cover.css" rel="stylesheet">
 </head>
-<body>
-<main>
-    <div id="main">
-        <div id="game" class="center">
-            <h2>Sum 20</h2>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">Sum 20</h3>
+            <nav style="display: none;" class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Pt-br</a>
+                <a class="nav-link fw-bold py-1 px-0" href="#">En</a>
+            </nav>
         </div>
-    </div>
-    <div id="keyboard">
-    </div>
-    <div id="modal" class="modal">
-        <div style="display: none" id="box-modal" class="box-modal">You Win
-            <br>
-            <div class="star0"></div>
-            <div class="star1"></div>
-            <div class="star2"></div>
+    </header>
+
+    <main class="x-5">
+        <div id="menu" class="position-absolute top-50 start-50 translate-middle">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button id="btn-daily" class="btn btn-outline-secondary" type="button">Daily</button>
+                <button id="btn-free" class="btn btn-outline-secondary" type="button">Free</button>
+            </div>
         </div>
-        <div style="display: none" id="box-modal-lose" class="box-modal">You Lose
-            <div id="response"></div>
+        <div id="daily" class="pag">
+            <div class="container" id="squad-daily-game">
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box selected" data-x="0" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="0" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="0" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="0" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="0" data-y="4"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box" data-x="1" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="1" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="1" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="1" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="1" data-y="4"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box" data-x="2" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="2" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="2" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="2" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="2" data-y="4"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box" data-x="3" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="3" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="3" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="3" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="3" data-y="4"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box" data-x="4" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="4" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="4" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="4" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="4" data-y="4"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center row-cols-5 b-2 g-2 g-lg-2 p-1">
+                    <div class="col">
+                        <div class="box" data-x="5" data-y="0"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="5" data-y="1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="5" data-y="2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="5" data-y="3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="box" data-x="5" data-y="4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-md grid position-absolute bottom-0 start-50 translate-middle-x">
+                <div class="row row-cols-8 b-1 g-1 g-lg-1 p-1 p-md-1 p-lg-1">
+                    <div class="col">
+                        <div class="field" data-value="1">1</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="2">2</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="3">3</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="4">4</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="5">5</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="6">6</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="7">7</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="8">8</div>
+                    </div>
+                </div>
+                <div class="row row-cols-8 b-1 g-1 g-lg-1 p-1 p-md-1 p-lg-1">
+                    <div class="col">
+                        <div class="field" data-value="9">9</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="10">10</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="11">11</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="12">12</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="13">13</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="14">14</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="15">15</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="backspace">←</div>
+                    </div>
+                </div>
+                <div class="row row-cols-8 b-1 g-1 g-lg-1 p-1 p-md-1 p-lg-1">
+                    <div class="col">
+                        <div class="field" data-value="16">16</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="17">17</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="18">18</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="19">19</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="20">20</div>
+                    </div>
+                    <div class="col">
+                        <div class="field" data-value="0">0</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="field" data-value="enter">⏎</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="display: none" id="box-modal-again">↻</div>
-    </div>
-    <div style="display: none" id="box-modal-comeback">Come back tomorrow!
-        <div id="time"></div>
-        <div id="score"></div>
-        <div id="share">Share</div>
-    </div>
-    <div class="container">
-        <label class="menu" data-op="1">Daily Mode</label>
-        <label class="menu" data-op="2">Free Mode</label>
-    </div>
-    <div class="modal-help">
-        <div id="help"></div>
-    </div>
-</main>
-<script>
-    window.onload = () => {
-        let all = new All();
-        let played = localStorage.getItem("played_" + getToday()) || 0;
-        if (sessionStorage.getItem("again") == 1 && played == 0) {
-            all.init();
-        }
-        let help = localStorage.getItem("help") || 0;
-        if(help == 0) {
-            $('.modal-help').show();
-        }
-    }
-</script>
-<script type="text/javascript" src="js/functions.js?v=5"></script>
-<script type="text/javascript" src="js/All.js?v=5"></script>
+        <div id="free" class="pag">
+        </div>
+
+        <div class="button-all-screen" data-bs-toggle="modal" data-bs-target="#theModal">
+        </div>
+
+        <div style="display: none" id="openExplainModal"  data-bs-toggle="modal" data-bs-target="#explainModal">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="theModal" tabindex="-1" aria-labelledby="theModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">progress</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <b id="matches">0</b>
+                                <p>Matches<p>
+                            </div>
+                            <div class="col">
+                                <b id="wins">0</b>
+                                <p>Wins</p>
+                            </div>
+                            <div class="col">
+                                <b id="sequence">0</b>
+                                <p>Sequence</p>
+                            </div>
+                            <div class="col">
+                                <b id="best-sequence">0</b>
+                                <p>Best sequence</p>
+                            </div>
+                        </div>
+                        <h5 class="modal-title">distribution of attempts</h5>
+                        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+                        <div class="row">
+                            <div class="col">
+                                <p>come back tomorrow!<p>
+                                <b id="time">00:00:00</b>
+                            </div>
+                            <div class="col">
+                                <button id="share" type="button" class="btn btn-primary">Share →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="explainModal" tabindex="-1" aria-labelledby="theModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sum 20</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    Find the sum of 20 in 6 attempts. After each attempt, the tiles show how close you
+                                    are to the solution.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <div id="line1"></div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="green2"></div>
+                                The number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is part of the calculation and is in the correct position.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <div id="line2"></div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <div id="orange2"></div>
+                                    The number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is part of the calculation, but in another position.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <div id="line3"></div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="delta2"></div>
+                                <p>The number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is not part of the calculation.
+                                    The account may have repeated numbers.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>A new sum appears each day.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="js/functions.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/game.js"></script>
 </body>
 </html>
