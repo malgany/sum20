@@ -70,12 +70,12 @@ body {
     background: #bbbbbb4a;
     color: #ffffff;
     border-radius: 5px;
-    font-size: 4.5vw;
+    font-size: 6.5vw;
     cursor: pointer;
 }
 
 #daily .container .justify-content-center .col {
-    width: 12%;
+    width: 19%;
 }
 
 #daily .container-md {
