@@ -165,15 +165,13 @@ function getDisplayScore() {
     return str_score_text;
 }
 
-const shareData = {
-    title: 'Sum 20',
-    text: localStorage.getItem('score_' + getToday()),
-    url: 'https://sum20.online/',
-}
-
 document.getElementById('share').addEventListener('click', async () => {
     try {
-        navigator.share(shareData)
+        navigator.share({
+            title: 'Sum 20',
+            text: localStorage.getItem('score_' + getToday()),
+            url: 'https://sum20.online/',
+        })
     } catch (err) {
         console.log('Error: ' + err);
     }
