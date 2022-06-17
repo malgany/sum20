@@ -173,12 +173,7 @@ const shareData = {
 
 document.getElementById('share').addEventListener('click', async () => {
     try {
-        if (detect_mobile()) {
-            navigator.share(shareData)
-        } else {
-            shareData.url = shareData.url +  localStorage.getItem('score_' + getToday());
-            navigator.share(shareData);
-        }
+        navigator.share(shareData)
     } catch (err) {
         console.log('Error: ' + err);
     }
