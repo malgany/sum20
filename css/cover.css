@@ -19,6 +19,7 @@
 body {
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+    user-select: none;
 }
 
 .cover-container {
@@ -141,6 +142,25 @@ body {
     background-image: url(../img/line3.png);
 }
 
+.green2, .orange2, .delta2 {
+    padding: 4px 7px;
+    border-radius: 5px;
+    color: #4c5354;
+}
+
+.green2 {
+    background: #00ff80;
+}
+
+.orange2 {
+    background: #ffa500;
+}
+
+.delta2 {
+    background: #4d5053;
+    color: #fbfcfc;
+}
+
 #green2 {
     background-position: center;
     height: 26px;
@@ -219,7 +239,7 @@ body {
         left: 23%;
     }
     .box {
-        font-size: 8vw;
+        font-size: 7vw;
     }
 }
 
